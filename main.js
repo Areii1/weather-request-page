@@ -2,23 +2,28 @@ var form = document.getElementById('text');
 form.addEventListener('submit', function(e) {
 	e.preventDefault();
 	var city = myTextArea.value;
-	loadDoc();
+  getJsonData();
 });
 
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-    myFunction(xhttp);
+function getJsonData() {
+  var xmlhttp = new XMLHttpRequest(),
+    json;
+
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+      json = JSON.parse(xmlhttp.responseText);
+      console.log(json);
     }
   };
-  xhttp.open("GET", "weather.xml", true);
-  xhttp.send();
+
+  xmlhttp.open('GET', 'apiData.json', true);
+  xmlhttp.send();
+  renderData(json);
 }
 
-function myFunction(xml) {
-  var xmlDoc = xml.responseXML;
-  var xmlText = (new XMLSerializer()).serializeToString(xmlDoc);
-
-  document.getElementById("demo").innerHTML = xmlText;
+function renderData(json) {
+  var textElement = document.createElement('p')
+  var text = document.createTextNode(json.name);
+  textElement.appendChild(json);
+  document.getElementById('output');
 }
