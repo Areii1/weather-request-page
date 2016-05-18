@@ -1,7 +1,7 @@
-var form = document.getElementById('text');
+var form = document.getElementById('weather-search-form');
 form.addEventListener('submit', function(e) {
 	e.preventDefault();
-  var city = document.getElementById('myTextArea').value;
+  var city = document.getElementById('city-input').value;
   fetchWeatherData();
 });
 
