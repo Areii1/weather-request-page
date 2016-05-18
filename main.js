@@ -6,24 +6,20 @@ form.addEventListener('submit', function(e) {
 });
 
 function getJsonData() {
-  var xmlhttp = new XMLHttpRequest(),
-    json;
+  var xmlhttp = new XMLHttpRequest();
 
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-      json = JSON.parse(xmlhttp.responseText);
-      console.log(json);
+      var json = JSON.parse(xmlhttp.responseText);
+      renderData(json);
     }
   };
 
-  xmlhttp.open('GET', 'apiData.json', true);
+  xmlhttp.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=82f22ae917a8c8565e5e1da1bcaef58d', true);
   xmlhttp.send();
-  renderData(json);
+
 }
 
 function renderData(json) {
-  var textElement = document.createElement('p')
-  var text = document.createTextNode(json.name);
-  textElement.appendChild(json);
-  document.getElementById('output');
+  document.getElementById('output').innerHTML = json.name;
 }
