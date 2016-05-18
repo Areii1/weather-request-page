@@ -19,7 +19,13 @@ body {
 }
 
 .weather-card__image {
-	background: url(res/background.jpg) no-repeat center;
+	background: 
+		linear-gradient(
+			transparent,
+			#fff
+	    ),
+		url(res/background.jpg) no-repeat center;
+
 	height: 250px;
 	background-size: cover;
 	border-radius: 15px 15px 0 0;
