@@ -15,18 +15,30 @@ function fetchWeatherData(city) {
     }
   };
 
-  xmlhttp.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=82f22ae917a8c8565e5e1da1bcaef58d', true);
+  xmlhttp.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=82f22ae917a8c8565e5e1da1bcaef58d&units=metric', true);
   xmlhttp.send();
 }
 
 function renderData(weatherData) {
-  document.getElementById('name-output').innerHTML = weatherData.name;
-  document.getElementById('country-name-output').innerHTML = weatherData.sys.country;
-  document.getElementById('temp-output').innerHTML = kelvinToCelcius(weatherData.main.temp);
+  document.getElementById('name-output').innerHTML = weatherData.name + ', ' + weatherData.sys.country;
+  document.getElementById('date-output').innerHTML = getDate();
+  document.getElementById('temp-output').innerHTML = Math.round(weatherData.main.temp) + "&#8451";
   document.getElementById('weather-type-output').innerHTML = weatherData.weather[0].main;
-  console.log(weatherData);
+
 }
 
-function kelvinToCelcius(kelvin) {
-  return kelvin - 273.15;
+function getDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+
+  if (dd < 10) {
+      dd = '0' + dd;
+  } 
+  if (mm < 10) {
+      mm = '0' + mm;
+  } 
+
+  return today = dd + '/' + mm + '/' + yyyy;
 }
