@@ -1,7 +1,12 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	color: #6C6260;
 	background: #EFEEEC;
+	text-align: center;
 }
 
 .weather-card {
@@ -24,6 +29,10 @@ body {
 	padding: 40px 0;
 }
 
+#weather-search-form {
+	margin-bottom: 40px;
+}
+
 #temp-output {
 	font-size: 40px;
 	margin: 0;
@@ -43,4 +52,17 @@ body {
 
 #weather-type-output {
 	margin: 9px 0 0 0;
+}
+
+input[type="text"] {
+	max-width: 300px;
+	width: 100%;
+	height: 40px;
+	border: 0;
+	border-bottom: 2px solid #ADADAD;
+	padding: 10px 15px;
+}
+
+input[type="text"]:focus {
+	border-color: orange;
 }
