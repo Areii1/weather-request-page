@@ -25,11 +25,21 @@ function renderData(weatherData) {
   document.getElementById('temp-output').innerHTML = Math.round(weatherData.main.temp) + "&#8451";
   document.getElementById('weather-type-output').innerHTML = weatherData.weather[0].main;
 
-  var img = new Image();
-  img.src = getIconSrc(weatherData);
-  if (img.src != null) {
-    document.getElementById('weather-type-icon').src = img.src;
+  if (document.getElementById('weather-type-icon-place').childNodes[0] == null) {
+    renderImg(weatherData);
   }
+  else {
+    var existingImg = document.getElementById('weather-type-icon-place').childNodes[0];
+    existingImg.parentNode.removeChild(existingImg);
+
+    renderImg(weatherData);
+  }
+}
+
+function renderImg(weatherData) {
+  var img = document.createElement('img');
+  img.setAttribute('src', getIconSrc(weatherData));
+  document.getElementById('weather-type-icon-place').appendChild(img);
 }
 
 function getIconSrc(weatherData) {
