@@ -36,8 +36,28 @@ function getIconSrc(weatherData) {
   
   var weatherType = weatherData.weather[0].main;
   console.log(weatherType);
-  if (weatherType === 'Rain') {
+  if (weatherType === 'Clear') {
+    var src = 'res/01d_clear_sky_day.png';
+    return src;
+  }
+  else if (weatherType === 'Mist' || weatherType === 'Haze' || weatherType === 'Fog' || weatherType === 'Dust') {}
+    var src = 'res/50d_mist_day.png';
+    return src;
+  }
+  else if (weatherType === 'Rain') {
     var src = 'res/10d_rain_day.png';
+    return src;
+  }
+  else if (weatherType === 'Clouds') {
+    var src = 'res/02d_few_clouds_day.png';
+    return src;
+  }  
+  else if (weatherType === 'Thunderstorm') {
+    var src = 'res/11d_thunderstorm_day.png';
+    return src;
+  }
+  else if (weatherType === 'Snow') {
+    var src = 'res/13d_snow_day.png';
     return src;
   }
   else {
