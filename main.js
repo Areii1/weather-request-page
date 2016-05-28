@@ -35,18 +35,18 @@ function renderWeatherTypeIcon(weatherData) {
 }
 
 function iconExists() {
-  return document.getElementById('weather-type-icon-place').childNodes[0] != null;
+  return !!document.getElementById('weather-type-icon').childNodes[0];
 }
 
 function removeIcon() {
-  var existingImg = document.getElementById('weather-type-icon-place').childNodes[0];
-  existingImg.parentNode.removeChild(existingImg);
+  var existingIcon = document.getElementById('weather-type-icon').childNodes[0];
+  existingIcon.parentNode.removeChild(existingIcon);
 }
 
 function addIcon(weatherData) {
-  var img = document.createElement('img');
-  img.setAttribute('src', getIconSrc(weatherData));
-  document.getElementById('weather-type-icon-place').appendChild(img);
+  var icon = document.createElement('img');
+  icon.setAttribute('src', getIconSrc(weatherData));
+  document.getElementById('weather-type-icon').appendChild(icon);
 }
 
 function getIconSrc(weatherData) {
