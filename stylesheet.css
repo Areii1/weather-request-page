@@ -57,21 +57,18 @@ body {
 }
 
 #weather-type {
-	margin: 9px 0 0 0;
-	height: 60px;
+	margin: 0 auto;
+	overflow: auto;
+	max-width: 100px;
 }
 
 #weather-type-output {
- 	float:left; 
- 	display:inline; 
- 	width: 20%;
- 	margin: 15px 0 0 30%;
+ 	float: left;
+ 	margin-top: 13px;
 }
 
 #weather-type-icon-place {
-	float:left; 
-	display:inline; 
-	width: 20%;
+	float: left;
 }
 
 input[type="text"] {
