@@ -45,26 +45,36 @@ function renderImg(weatherData) {
 function getIconSrc(weatherData) {
   var weatherType = weatherData.weather[0].main;
 
-  if (weatherType === 'Clear') {
-    return 'res/01d_clear_sky_day.png';
-  }
-  else if (weatherType === 'Mist' || weatherType === 'Haze' || weatherType === 'Fog' || weatherType === 'Dust') {
-    return 'res/50d_mist_day.png';
-  }
-  else if (weatherType === 'Rain') {
-    return 'res/10d_rain_day.png';
-  }
-  else if (weatherType === 'Clouds') {
-    return 'res/02d_few_clouds_day.png';
-  }  
-  else if (weatherType === 'Thunderstorm') {
-    return 'res/11d_thunderstorm_day.png';
-  }
-  else if (weatherType === 'Snow') {
-    return 'res/13d_snow_day.png';
-  }
-  else {
-    return null;
+  switch (weatherType) {
+    case 'Clear':
+      return 'res/01d_clear_sky_day.png';
+      break;
+    case 'Mist':
+      return 'res/50d_mist_day.png';
+      break;
+    case 'Haze':
+      return 'res/50d_mist_day.png';
+      break;
+    case 'Fog':
+      return 'res/50d_mist_day.png';
+      break;
+    case 'Dust':
+      return 'res/50d_mist_day.png';
+      break;
+    case 'Clouds':
+      return 'res/02d_few_clouds_day.png';
+      break;
+    case 'Thunderstorm':
+      return 'res/11d_thunderstorm_day.png';
+      break;
+    case 'Snow':
+      return 'res/13d_snow_day.png';
+      break;
+    case 'Rain':
+      return 'res/10d_rain_day.png';
+      break;
+    default:
+      return null;
   }
 }
 
