@@ -25,6 +25,24 @@ function renderData(weatherData) {
   document.getElementById('temp-output').innerHTML = Math.round(weatherData.main.temp) + "&#8451";
   document.getElementById('weather-type-output').innerHTML = weatherData.weather[0].main;
 
+  var img = new Image();
+  img.src = getIconSrc(weatherData);
+  if (img.src != null) {
+    document.getElementById('weather-type-icon').src = img.src;
+  }
+}
+
+function getIconSrc(weatherData) {
+  
+  var weatherType = weatherData.weather[0].main;
+  console.log(weatherType);
+  if (weatherType === 'Rain') {
+    var src = 'res/10d_rain_day.png';
+    return src;
+  }
+  else {
+    return null;
+  }
 }
 
 function getDate() {
