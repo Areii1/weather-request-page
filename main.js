@@ -24,19 +24,26 @@ function renderData(weatherData) {
   document.getElementById('date-output').innerHTML = getDate();
   document.getElementById('temp-output').innerHTML = Math.round(weatherData.main.temp) + "&#8451";
   document.getElementById('weather-type-output').innerHTML = weatherData.weather[0].main;
-
-  if (document.getElementById('weather-type-icon-place').childNodes[0] == null) {
-    renderImg(weatherData);
-  }
-  else {
-    var existingImg = document.getElementById('weather-type-icon-place').childNodes[0];
-    existingImg.parentNode.removeChild(existingImg);
-
-    renderImg(weatherData);
-  }
+  renderWeatherTypeIcon(weatherData);
 }
 
-function renderImg(weatherData) {
+function renderWeatherTypeIcon(weatherData) {
+  if (iconExists()) {
+    removeIcon();
+  }
+  addIcon(weatherData);
+}
+
+function iconExists() {
+  return document.getElementById('weather-type-icon-place').childNodes[0] != null;
+}
+
+function removeIcon() {
+  var existingImg = document.getElementById('weather-type-icon-place').childNodes[0];
+  existingImg.parentNode.removeChild(existingImg);
+}
+
+function addIcon(weatherData) {
   var img = document.createElement('img');
   img.setAttribute('src', getIconSrc(weatherData));
   document.getElementById('weather-type-icon-place').appendChild(img);
